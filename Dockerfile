@@ -63,11 +63,17 @@ RUN npm install -g \
 
 ENV CHROME_PATH=/usr/bin/chromium
 
-# Non-root build user so the produced artefact inherits the host
-# owner's UID via the bind-mount, not root.
-RUN useradd --create-home --shell /bin/bash build
-USER build
+# Apptainer runs as the host user — the Dockerfile USER directive
+# is not honoured AND the bind mount maps host file ownership
+# verbatim. A non-root USER in the image creates a permission trap
+# (UID 1000 in the image can't read the project tree if the host
+# UID differs). Stay root ; the sandbox boundary is the workspace
+# μVM, not the container user.
+
 WORKDIR /workspace
+# Apptainer exec uses non-login shells — pin PATH so marp / pandoc
+# are reachable.
+ENV PATH=/usr/local/bin:/usr/bin:${PATH}
 
 # No ENTRYPOINT — callers explicitly pass `marp …` or `pandoc …`
 # depending on the source. Avoids the surprise where ENTRYPOINT=marp
