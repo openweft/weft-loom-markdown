@@ -31,6 +31,17 @@
 # The image is published from .github/workflows/build.yml on every
 # `v*` tag push to ghcr.io/openweft/weft-loom-markdown:<tag> + :latest.
 
+# Multi-stage : each per-theme image is a `FROM scratch` artifact
+# whose sole content is `/marp/<name>.css`. We pull each tag exactly
+# once and consolidate them into /opt/marp/themes/ in the final stage.
+# Per-repo theme sources live at openweft/weft-loom-theme-<name>.
+FROM ghcr.io/openweft/weft-loom-theme-polytechnique:v0.1.1 AS theme-polytechnique
+FROM ghcr.io/openweft/weft-loom-theme-ip-paris:v0.1.1     AS theme-ip-paris
+FROM ghcr.io/openweft/weft-loom-theme-cnrs:v0.1.1         AS theme-cnrs
+FROM ghcr.io/openweft/weft-loom-theme-dinum:v0.1.1        AS theme-dinum
+FROM ghcr.io/openweft/weft-loom-theme-paris-saclay:v0.1.1 AS theme-paris-saclay
+FROM ghcr.io/openweft/weft-loom-theme-ihes:v0.1.1         AS theme-ihes
+
 FROM node:22-bookworm-slim
 
 # Chromium for marp-cli PDF / PPTX export + TeX Live for pandoc PDF
@@ -64,12 +75,19 @@ RUN npm install -g \
 ENV CHROME_PATH=/usr/bin/chromium
 
 # Bundled Marp themes for French academic / public-sector
-# institutions : polytechnique, ip-paris, cnrs, dinum, paris-saclay.
-# Each is a self-contained CSS file copied into /opt/marp/themes/.
+# institutions : polytechnique, ip-paris, cnrs, dinum, paris-saclay,
+# ihes. Each ships as its own OCI artifact published by
+# openweft/weft-loom-theme-<name> ; we COPY --from= the per-theme
+# stages declared above to consolidate them into /opt/marp/themes/.
 # Users select via `theme: <name>` in the YAML front-matter ;
-# marp-cli discovers them through the `--theme-set` CLI flag the
-# weft-loom-server's compile dispatcher passes by default.
-COPY themes/ /opt/marp/themes/
+# marp-cli auto-discovers them through the --theme-set flag wired
+# into the marp wrapper below.
+COPY --from=theme-polytechnique /marp/polytechnique.css /opt/marp/themes/polytechnique.css
+COPY --from=theme-ip-paris      /marp/ip-paris.css      /opt/marp/themes/ip-paris.css
+COPY --from=theme-cnrs          /marp/cnrs.css          /opt/marp/themes/cnrs.css
+COPY --from=theme-dinum         /marp/dinum.css         /opt/marp/themes/dinum.css
+COPY --from=theme-paris-saclay  /marp/paris-saclay.css  /opt/marp/themes/paris-saclay.css
+COPY --from=theme-ihes          /marp/ihes.css          /opt/marp/themes/ihes.css
 # Wrap the marp-cli binary so every invocation auto-discovers the
 # bundled themes — users don't have to pass `--theme-set` per call.
 # The real marp lives at /usr/local/lib/node_modules/@marp-team/marp-cli/marp-cli.js ;
