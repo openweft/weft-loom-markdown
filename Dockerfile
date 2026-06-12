@@ -52,14 +52,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         texlive-fonts-recommended \
     && rm -rf /var/lib/apt/lists/*
 
-# marp-cli + a curated set of community themes the autocomplete in
-# the weft-loom-server SPA suggests. Adding a theme here makes it
-# usable inside marp-cli without any per-project install.
+# marp-cli + the marpit core. Community themes (marp-theme-am,
+# marp-theme-academic, …) used to be installed here but they don't
+# exist on npm anymore — they were renamed to scoped packages and
+# the namespace flipped. Themes ship via the `theme:` front-matter
+# pointing at a CSS file in the project tree instead.
 RUN npm install -g \
         @marp-team/marp-cli \
-        @marp-team/marpit \
-        marp-theme-am \
-        marp-theme-academic
+        @marp-team/marpit
 
 ENV CHROME_PATH=/usr/bin/chromium
 
