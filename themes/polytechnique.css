@@ -10,10 +10,14 @@
 
 @import 'default';
 
+/* École polytechnique brand-accurate colours (Bordeaux X red is
+ * the institution's signature ; the X visual identity uses red
+ * + black + white only — no other accent). Aligned with the
+ * official brand guide (PRINT charter PMS 1955 ≈ #b82b36). */
 :root {
-  --x-red: #b32428;
+  --x-red: #b82b36;
   --x-red-dark: #7a181b;
-  --x-grey: #3d3d3d;
+  --x-grey: #1a1a1a;
   --x-bg: #ffffff;
   --x-muted: #6b6b6b;
 }

@@ -9,13 +9,18 @@
 
 @import 'default';
 
+/* Université Paris-Saclay 2020 brand : signature chartreuse green
+ * (Pantone 376C ≈ #84BD00) with a contrasting deep navy. The
+ * earlier #00b04f I used was too saturated / blue-shifted ; the
+ * brand-accurate hue is yellower-green. */
 :root {
-  --ps-green: #00b04f;
-  --ps-green-dark: #008c3f;
+  --ps-green: #84bd00;
+  --ps-green-dark: #6a9700;
+  --ps-navy: #003c69;
   --ps-grey: #3a3a3a;
   --ps-bg: #ffffff;
   --ps-muted: #6f6f6f;
-  --ps-alt: #f3f8f4;
+  --ps-alt: #f6faea;
 }
 
 section {
@@ -48,7 +53,7 @@ section::after {
 }
 
 h1 {
-  color: var(--ps-green-dark);
+  color: var(--ps-navy);
   font-size: 2.4em;
   font-weight: 700;
   margin-bottom: 0.5em;
@@ -61,18 +66,18 @@ h2 {
   padding-left: 0.5em;
 }
 h3 {
-  color: var(--ps-green-dark);
+  color: var(--ps-navy);
   font-size: 1.2em;
 }
 
 a {
-  color: var(--ps-green-dark);
+  color: var(--ps-navy);
   text-decoration: underline;
 }
 
 code {
   background: var(--ps-alt);
-  color: var(--ps-green-dark);
+  color: var(--ps-navy);
   padding: 2px 6px;
   font-family: "JetBrains Mono", "Menlo", monospace;
 }
@@ -97,7 +102,7 @@ blockquote {
 ul li::marker { color: var(--ps-green); }
 
 section.lead {
-  background: linear-gradient(135deg, var(--ps-green) 0%, var(--ps-green-dark) 100%);
+  background: linear-gradient(135deg, var(--ps-navy) 0%, var(--ps-green-dark) 100%);
   color: white;
   text-align: center;
 }
