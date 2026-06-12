@@ -35,12 +35,12 @@
 # whose sole content is `/marp/<name>.css`. We pull each tag exactly
 # once and consolidate them into /opt/marp/themes/ in the final stage.
 # Per-repo theme sources live at openweft/weft-loom-theme-<name>.
-FROM ghcr.io/openweft/weft-loom-theme-polytechnique:v0.1.1 AS theme-polytechnique
-FROM ghcr.io/openweft/weft-loom-theme-ip-paris:v0.1.1     AS theme-ip-paris
-FROM ghcr.io/openweft/weft-loom-theme-cnrs:v0.1.1         AS theme-cnrs
-FROM ghcr.io/openweft/weft-loom-theme-dinum:v0.1.1        AS theme-dinum
-FROM ghcr.io/openweft/weft-loom-theme-paris-saclay:v0.1.1 AS theme-paris-saclay
-FROM ghcr.io/openweft/weft-loom-theme-ihes:v0.1.1         AS theme-ihes
+FROM ghcr.io/openweft/weft-loom-theme-polytechnique:v0.1.2 AS theme-polytechnique
+FROM ghcr.io/openweft/weft-loom-theme-ip-paris:v0.1.2     AS theme-ip-paris
+FROM ghcr.io/openweft/weft-loom-theme-cnrs:v0.1.2         AS theme-cnrs
+FROM ghcr.io/openweft/weft-loom-theme-dinum:v0.1.2        AS theme-dinum
+FROM ghcr.io/openweft/weft-loom-theme-paris-saclay:v0.1.2 AS theme-paris-saclay
+FROM ghcr.io/openweft/weft-loom-theme-ihes:v0.1.2         AS theme-ihes
 
 FROM node:22-bookworm-slim
 
