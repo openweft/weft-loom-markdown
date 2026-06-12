@@ -4,15 +4,19 @@
  * @author_url https://github.com/openweft
  *
  * Marp slide theme inspired by the Institut Polytechnique de
- * Paris visual identity (navy blue, ochre accent).
+ * Paris visual identity (deep navy primary, steel-blue accent ;
+ * brand-accurate after dropping the earlier ochre mis-attribution).
  */
 
 @import 'default';
 
+/* IP Paris brand : deep navy primary with light steel-blue accent ;
+ * no ochre — that was my earlier mis-attribution. The actual brand
+ * guide centres on a navy-only palette + generous white space. */
 :root {
-  --ipp-navy: #003874;
-  --ipp-navy-dark: #002554;
-  --ipp-ochre: #f3a826;
+  --ipp-navy: #002554;
+  --ipp-navy-light: #2a4a7a;
+  --ipp-steel: #6b8aac;
   --ipp-grey: #4a4a4a;
   --ipp-bg: #ffffff;
   --ipp-muted: #7a7a7a;
@@ -34,7 +38,7 @@ section::before {
   left: 0;
   width: 6px;
   bottom: 0;
-  background: linear-gradient(180deg, var(--ipp-navy) 0%, var(--ipp-ochre) 100%);
+  background: linear-gradient(180deg, var(--ipp-navy) 0%, var(--ipp-steel) 100%);
 }
 
 section::after {
@@ -51,7 +55,7 @@ h1 {
   color: var(--ipp-navy);
   font-size: 2.4em;
   font-weight: 700;
-  border-bottom: 3px solid var(--ipp-ochre);
+  border-bottom: 3px solid var(--ipp-steel);
   padding-bottom: 0.15em;
   margin-bottom: 0.6em;
 }
@@ -61,7 +65,7 @@ h2 {
   font-weight: 600;
 }
 h3 {
-  color: var(--ipp-ochre);
+  color: var(--ipp-steel);
   font-size: 1.2em;
 }
 
@@ -69,7 +73,7 @@ a { color: var(--ipp-navy); text-decoration: underline; }
 
 code {
   background: #f4f6fa;
-  color: var(--ipp-navy-dark);
+  color: var(--ipp-navy-light);
   padding: 2px 6px;
   border-radius: 3px;
   font-family: "JetBrains Mono", "Menlo", monospace;
@@ -77,23 +81,23 @@ code {
 }
 
 pre code {
-  background: var(--ipp-navy-dark);
+  background: var(--ipp-navy-light);
   color: #e6eef9;
-  border-left: 4px solid var(--ipp-ochre);
+  border-left: 4px solid var(--ipp-steel);
   display: block;
   padding: 1em;
 }
 
 blockquote {
-  border-left: 4px solid var(--ipp-ochre);
+  border-left: 4px solid var(--ipp-steel);
   padding-left: 1em;
   color: var(--ipp-navy);
 }
 
-ul li::marker { color: var(--ipp-ochre); }
+ul li::marker { color: var(--ipp-steel); }
 
 section.lead {
-  background: linear-gradient(135deg, var(--ipp-navy) 0%, var(--ipp-navy-dark) 100%);
+  background: linear-gradient(135deg, var(--ipp-navy) 0%, var(--ipp-navy-light) 100%);
   color: white;
   text-align: center;
 }
@@ -101,10 +105,10 @@ section.lead::before { display: none; }
 section.lead::after { color: rgba(255, 255, 255, 0.6); }
 section.lead h1 {
   color: white;
-  border-bottom: 3px solid var(--ipp-ochre);
+  border-bottom: 3px solid var(--ipp-steel);
   display: inline-block;
 }
-section.lead h2 { color: var(--ipp-ochre); font-weight: 400; }
+section.lead h2 { color: var(--ipp-steel); font-weight: 400; }
 
 table { border-collapse: collapse; }
 th {
