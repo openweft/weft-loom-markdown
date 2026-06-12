@@ -10,11 +10,15 @@
 
 @import 'default';
 
+/* CNRS 2019 brand : blue is the only signature colour ; a soft
+ * cyan is allowed as a secondary academic accent. Orange was my
+ * earlier mis-attribution (not in the CNRS visual identity).
+ * Black on white prevails ; the institutional blue is reserved
+ * for headings + logo. */
 :root {
   --cnrs-navy: #1d50a2;
   --cnrs-navy-dark: #143d80;
   --cnrs-cyan: #00afca;
-  --cnrs-orange: #ff7900;
   --cnrs-grey: #424242;
   --cnrs-bg: #ffffff;
   --cnrs-muted: #6e6e6e;
@@ -52,7 +56,7 @@ section::after {
   background: linear-gradient(90deg,
     var(--cnrs-navy) 0%,
     var(--cnrs-cyan) 50%,
-    var(--cnrs-orange) 100%);
+    var(--cnrs-navy) 100%);
 }
 
 h1 {
@@ -68,7 +72,7 @@ h2 {
   border-left: 4px solid var(--cnrs-cyan);
   padding-left: 0.5em;
 }
-h3 { color: var(--cnrs-orange); font-size: 1.2em; }
+h3 { color: var(--cnrs-navy); font-size: 1.2em; }
 
 a { color: var(--cnrs-cyan); border-bottom: 1px dotted var(--cnrs-cyan); text-decoration: none; }
 
@@ -89,7 +93,7 @@ pre code {
 }
 
 blockquote {
-  border-left: 4px solid var(--cnrs-orange);
+  border-left: 4px solid var(--cnrs-navy);
   padding-left: 1em;
   color: var(--cnrs-grey);
   font-style: italic;
