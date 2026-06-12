@@ -1,0 +1,131 @@
+/*!
+ * @theme dinum
+ * @author weft-loom
+ * @author_url https://github.com/openweft
+ *
+ * Marp slide theme inspired by the DINUM (Direction
+ * Interministérielle du Numérique) visual identity and the DSFR
+ * (Système de Design de l'État) palette : bleu Marianne, rouge
+ * Marianne, white. Official-state look.
+ */
+
+@import 'default';
+
+:root {
+  --marianne-blue: #000091;
+  --marianne-red: #e1000f;
+  --dinum-grey: #161616;
+  --dinum-bg: #ffffff;
+  --dinum-muted: #666666;
+  --dinum-alt: #f6f6f6;
+}
+
+section {
+  background: var(--dinum-bg);
+  color: var(--dinum-grey);
+  font-family: "Marianne", "Helvetica Neue", "Arial", sans-serif;
+  padding: 64px 80px;
+  font-size: 28px;
+  line-height: 1.45;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--marianne-blue) 0%,
+    var(--marianne-blue) 33%,
+    white 33%,
+    white 66%,
+    var(--marianne-red) 66%,
+    var(--marianne-red) 100%);
+}
+
+section::after {
+  content: 'République Française · DINUM';
+  position: absolute;
+  bottom: 20px;
+  right: 32px;
+  font-size: 13px;
+  color: var(--dinum-muted);
+  letter-spacing: 0.06em;
+}
+
+h1 {
+  color: var(--marianne-blue);
+  font-size: 2.4em;
+  font-weight: 700;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+h2 {
+  color: var(--dinum-grey);
+  font-size: 1.6em;
+  font-weight: 700;
+  border-bottom: 2px solid var(--marianne-blue);
+  padding-bottom: 0.15em;
+}
+h3 {
+  color: var(--marianne-red);
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+a {
+  color: var(--marianne-blue);
+  border-bottom: 1px solid var(--marianne-blue);
+  text-decoration: none;
+}
+
+code {
+  background: var(--dinum-alt);
+  color: var(--marianne-blue);
+  padding: 2px 6px;
+  font-family: "JetBrains Mono", "Menlo", monospace;
+}
+
+pre code {
+  background: #1b1b35;
+  color: #e6e6f5;
+  border-left: 4px solid var(--marianne-blue);
+  display: block;
+  padding: 1em;
+}
+
+blockquote {
+  border-left: 4px solid var(--marianne-red);
+  padding-left: 1em;
+  color: var(--dinum-grey);
+}
+
+ul li::marker { color: var(--marianne-blue); }
+
+section.lead {
+  background: var(--marianne-blue);
+  color: white;
+  text-align: center;
+}
+section.lead::before {
+  /* Re-affirm the tricolore on the lead slide. */
+  width: 240px;
+  height: 8px;
+  background: linear-gradient(90deg,
+    var(--marianne-blue) 0%, white 33%, var(--marianne-red) 66%);
+  filter: brightness(1.1);
+}
+section.lead::after { color: rgba(255, 255, 255, 0.85); }
+section.lead h1 { color: white; }
+section.lead h2 { color: rgba(255, 255, 255, 0.85); border: none; font-weight: 400; }
+
+table { border-collapse: collapse; margin: 0.6em 0; }
+th {
+  background: var(--marianne-blue);
+  color: white;
+  padding: 0.4em 0.8em;
+  text-align: left;
+}
+td { padding: 0.4em 0.8em; border-bottom: 1px solid #d4d4e0; }
