@@ -63,6 +63,21 @@ RUN npm install -g \
 
 ENV CHROME_PATH=/usr/bin/chromium
 
+# Bundled Marp themes for French academic / public-sector
+# institutions : polytechnique, ip-paris, cnrs, dinum, paris-saclay.
+# Each is a self-contained CSS file copied into /opt/marp/themes/.
+# Users select via `theme: <name>` in the YAML front-matter ;
+# marp-cli discovers them through the `--theme-set` CLI flag the
+# weft-loom-server's compile dispatcher passes by default.
+COPY themes/ /opt/marp/themes/
+# Wrap the marp-cli binary so every invocation auto-discovers the
+# bundled themes — users don't have to pass `--theme-set` per call.
+# The real marp lives at /usr/local/lib/node_modules/@marp-team/marp-cli/marp-cli.js ;
+# we rename the npm shim then shadow it with a 5-line wrapper.
+RUN mv /usr/local/bin/marp /usr/local/bin/marp-real \
+ && printf '#!/bin/sh\nexec /usr/local/bin/marp-real --theme-set /opt/marp/themes "$@"\n' > /usr/local/bin/marp \
+ && chmod +x /usr/local/bin/marp
+
 # Apptainer runs as the host user — the Dockerfile USER directive
 # is not honoured AND the bind mount maps host file ownership
 # verbatim. A non-root USER in the image creates a permission trap
