@@ -1,0 +1,116 @@
+/*!
+ * @theme paris-saclay
+ * @author weft-loom
+ * @author_url https://github.com/openweft
+ *
+ * Marp slide theme inspired by the Université Paris-Saclay
+ * visual identity : signature green + clean academic typography.
+ */
+
+@import 'default';
+
+:root {
+  --ps-green: #00b04f;
+  --ps-green-dark: #008c3f;
+  --ps-grey: #3a3a3a;
+  --ps-bg: #ffffff;
+  --ps-muted: #6f6f6f;
+  --ps-alt: #f3f8f4;
+}
+
+section {
+  background: var(--ps-bg);
+  color: var(--ps-grey);
+  font-family: "Source Sans Pro", "Open Sans", "Arial", sans-serif;
+  padding: 56px 72px;
+  font-size: 28px;
+  line-height: 1.5;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--ps-green);
+}
+
+section::after {
+  content: 'Université Paris-Saclay';
+  position: absolute;
+  bottom: 18px;
+  right: 32px;
+  font-size: 13px;
+  color: var(--ps-muted);
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  color: var(--ps-green-dark);
+  font-size: 2.4em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+h2 {
+  color: var(--ps-grey);
+  font-size: 1.6em;
+  font-weight: 600;
+  border-left: 4px solid var(--ps-green);
+  padding-left: 0.5em;
+}
+h3 {
+  color: var(--ps-green-dark);
+  font-size: 1.2em;
+}
+
+a {
+  color: var(--ps-green-dark);
+  text-decoration: underline;
+}
+
+code {
+  background: var(--ps-alt);
+  color: var(--ps-green-dark);
+  padding: 2px 6px;
+  font-family: "JetBrains Mono", "Menlo", monospace;
+}
+
+pre code {
+  background: #142d1c;
+  color: #d5efdd;
+  border-left: 4px solid var(--ps-green);
+  display: block;
+  padding: 1em;
+}
+
+blockquote {
+  border-left: 4px solid var(--ps-green);
+  padding-left: 1em;
+  color: var(--ps-grey);
+  background: var(--ps-alt);
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+ul li::marker { color: var(--ps-green); }
+
+section.lead {
+  background: linear-gradient(135deg, var(--ps-green) 0%, var(--ps-green-dark) 100%);
+  color: white;
+  text-align: center;
+}
+section.lead::before { display: none; }
+section.lead::after { color: rgba(255, 255, 255, 0.85); }
+section.lead h1 { color: white; }
+section.lead h2 { color: rgba(255, 255, 255, 0.9); border: none; font-weight: 400; }
+
+table { border-collapse: collapse; margin: 0.6em 0; }
+th {
+  background: var(--ps-green-dark);
+  color: white;
+  padding: 0.4em 0.8em;
+  text-align: left;
+}
+td { padding: 0.4em 0.8em; border-bottom: 1px solid #d4e8d9; }
