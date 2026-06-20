@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/openweft/brand/main/social/weft-loom-markdown.png" alt="weft-loom-markdown" width="720"></p>
+
 # weft-loom-markdown
 
 Markdown compile sandbox image for [weft-loom](https://github.com/openweft/weft-loom-server).
